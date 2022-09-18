@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cms-admin-dash": {
+      "hosting": {
+        "app": [
+          "cms-admin-dash"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cms-admin-dash"
+  }
+}
