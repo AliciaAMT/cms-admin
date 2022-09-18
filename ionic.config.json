@@ -1,0 +1,8 @@
+{
+  "name": "CMS-Admin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "a68808f5"
+}
