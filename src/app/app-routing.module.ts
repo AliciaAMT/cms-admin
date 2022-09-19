@@ -6,14 +6,15 @@ import { IntroGuard } from './guards/intro.guard';
 import { AutoLoginGuard } from './guards/auto-login.guard';
 
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs']);
 
 
 const routes: Routes = [	{
   path: 'login',
   loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginPageModule),
-  canLoad: [IntroGuard, AutoLoginGuard] // Check if we should show the introduction or forward to inside
+  canLoad: [IntroGuard, AutoLoginGuard], // Check if we should show the introduction or forward to inside
+  ...canActivate(redirectLoggedInToHome), // If authenticated, redirect to home
 },
 {
   path: 'intro',
@@ -22,13 +23,20 @@ const routes: Routes = [	{
 {
   path: 'tabs',
   loadChildren: () => import('./tabs/tabs.module').then((m) => m.TabsPageModule),
-  canLoad: [AuthGuard] // Secure all child pages
+  ...canActivate(redirectUnauthorizedToLogin), // If not authenticated, redirect to login
+
+  // canLoad: [AuthGuard] // Secure all child pages
 },
 {
   path: '',
   redirectTo: '/login',
   pathMatch: 'full'
-}
+},
+{
+  path: '**',
+  redirectTo: '',
+  pathMatch: 'full'
+}];
 
   // {
   //   path: '',
@@ -65,7 +73,7 @@ const routes: Routes = [	{
   //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   // }
 
-];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
