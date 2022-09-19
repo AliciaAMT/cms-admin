@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
     ...canActivate(redirectUnauthorizedToLogin)
 
   },
@@ -23,13 +23,16 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
 		...canActivate(redirectLoggedInToHome)
   },
+  // {
+  //   path: 'tabs',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+  //   ...canActivate(redirectUnauthorizedToLogin)
+  // },
   {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
   }
-
-
 ];
 @NgModule({
   imports: [
