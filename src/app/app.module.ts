@@ -15,6 +15,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage())],
+    provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage()),
+    HttpClientModule
+  ],
   providers: [{
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy
