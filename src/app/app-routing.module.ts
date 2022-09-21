@@ -33,12 +33,17 @@ const routes: Routes = [
 
   // canLoad: [AuthGuard] // Secure all child pages
 },
-
+{
+  path: 'home',
+  loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+},
 {
   path: '**',
   redirectTo: 'tabs',
   pathMatch: 'full'
-}];
+},
+
+];
 
   // {
   //   path: '',
