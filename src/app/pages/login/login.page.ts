@@ -5,8 +5,6 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-
-
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
@@ -14,7 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPage implements OnInit {
 	credentials: FormGroup;
-  constructor(
+
+constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
 		private alertController: AlertController,
@@ -82,13 +81,13 @@ async register() {
 
   		}
 	}
-  async showAlert(header, message) {
-    const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK']
-    });
+  // async showAlert(header, message) {
+  //   const alert = await this.alertController.create({
+  //     header,
+  //     message,
+  //     buttons: ['OK']
+  //   });
 
-    await alert.present();
-  }
+  //   await alert.present();
+  // }
 }
