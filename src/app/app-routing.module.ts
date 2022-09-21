@@ -10,7 +10,13 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs']);
 
 
-const routes: Routes = [	{
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'tabs',
+    pathMatch: 'full'
+  },
+  {
   path: 'login',
   loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginPageModule),
   canLoad: [IntroGuard, AutoLoginGuard], // Check if we should show the introduction or forward to inside
@@ -27,14 +33,10 @@ const routes: Routes = [	{
 
   // canLoad: [AuthGuard] // Secure all child pages
 },
-{
-  path: '',
-  redirectTo: '/login',
-  pathMatch: 'full'
-},
+
 {
   path: '**',
-  redirectTo: '',
+  redirectTo: 'tabs',
   pathMatch: 'full'
 }];
 

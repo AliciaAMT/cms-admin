@@ -32,6 +32,7 @@ export class AvatarService {
 			});
 			return true;
 		} catch (e) {
+      console.log(e);
 			return null;
 		}
 	}
