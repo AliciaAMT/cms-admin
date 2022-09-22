@@ -1,3 +1,4 @@
+import { RecoverCredsComponent } from './../../components/recover-creds/recover-creds.component';
 // import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPage implements OnInit {
 	credentials: FormGroup;
+  component: RecoverCredsComponent;
 
 constructor(
 		private fb: FormBuilder,

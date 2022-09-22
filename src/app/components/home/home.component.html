@@ -1,6 +1,20 @@
 <p>
-  home works!
+  home works! {{ name }}
 </p>
+
+<div class="preview">
+<div *ngIf="profile?.userRole">
+  {{ profile.userRole }}
+</div>
+  <ion-avatar (click)="changeImage()">
+    <img *ngIf="profile?.imageUrl; else placheolder_avatar;" [src]="profile.imageUrl" />
+    <ng-template #placheolder_avatar>
+      <div class="fallback">
+        <p>Select avatar</p>
+      </div>
+    </ng-template>
+  </ion-avatar>
+</div>
 <ion-nav-link router-direction="forward" [component]="component">
   <ion-button>Admin Dashboard</ion-button>
 </ion-nav-link>
