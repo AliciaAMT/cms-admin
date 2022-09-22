@@ -1,3 +1,4 @@
+import { LoginPage } from './../../pages/login/login.page';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.scss'],
 })
 export class AdminDashboardComponent implements OnInit {
-  component = HomeComponent;
+  component = LoginPage;
 
   constructor() { }
 

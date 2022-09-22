@@ -15,3 +15,32 @@ A content management system for Accessible Web Media Administrators
 ## Notes
 
 Project started on Github for version control and collaboration.  I'm using the Ionic Framework to build the app.  I'm using Firebase for the backend.  I'm using the Angular Framework for the frontend.  I'm using the Capacitor Framework to build the app for mobile devices.
+
+
+
+
+.then(
+    async () => {
+      const alert = await this.alertCtrl.create({
+        message: 'Check your email for a password reset link',
+        buttons: [
+          {
+            text: 'Ok',
+            role: 'cancel',
+            handler: () => {
+              this.router.navigateByUrl('login');
+            },
+          },
+        ],
+      });
+      await alert.present();
+    },
+    async error => {
+      const errorAlert = await this.alertCtrl.create({
+        message: error.message,
+        buttons: [{ text: 'Ok', role: 'cancel' }],
+      });
+      await errorAlert.present();
+    }
+  );
+}

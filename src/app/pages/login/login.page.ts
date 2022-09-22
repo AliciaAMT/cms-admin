@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
 
 @Component({
 	selector: 'app-login',
@@ -20,7 +21,8 @@ constructor(
 		private authService: AuthService,
 		private alertController: AlertController,
 		private router: Router,
-		private loadingController: LoadingController
+		private loadingController: LoadingController,
+    private auth: Auth
 	) {
 
   }
@@ -37,9 +39,37 @@ constructor(
 	ngOnInit() {
 		this.credentials = this.fb.group({
 			email: ['aliciataylorguitar@gmail.com', [Validators.required, Validators.email]],
-			password: ['narnia123', [Validators.required, Validators.minLength(6)]]
+			password: ['Narnia123', [Validators.required, Validators.minLength(6)]]
 		});
 	}
+
+  async resetPassword() {
+    return sendPasswordResetEmail(this.auth, this.credentials.value.email)
+    .then(
+      async () => {
+        const alert = await this.alertController.create({
+          message: 'Check your email for a password reset link',
+          buttons: [
+            {
+              text: 'Ok',
+              role: 'cancel',
+              handler: () => {
+                this.router.navigateByUrl('login');
+              },
+            },
+          ],
+        });
+        await alert.present();
+      },
+      async error => {
+        const errorAlert = await this.alertController.create({
+          message: error.message,
+          buttons: [{ text: 'Ok', role: 'cancel' }],
+        });
+        await errorAlert.present();
+      }
+    );
+  }
 async register() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -61,8 +91,13 @@ async register() {
 
   }
 
-
-
+//   async resetPassword(email: string): Promise<void> {
+//     await this.auth.sendPasswordResetEmail(email).then(() => {
+//        this.router.navigate(['auth/reset-confirm']);
+//     }).catch((error) => {
+//        this.notifier.showError(error.message);
+//     });
+//  }
 
 	async login() {
 		const loading = await this.loadingController.create();
