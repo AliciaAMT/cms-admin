@@ -15,6 +15,11 @@
     </ng-template>
   </ion-avatar>
 </div>
-<ion-nav-link router-direction="forward" [component]="component">
-  <ion-button>Admin Dashboard</ion-button>
-</ion-nav-link>
+
+<div *ngIf="profile.userRole === 'admin'">
+
+  <ion-nav-link router-direction="forward" [component]="component">
+    <ion-button>Admin Dashboard</ion-button>
+  </ion-nav-link>
+</div>
+
