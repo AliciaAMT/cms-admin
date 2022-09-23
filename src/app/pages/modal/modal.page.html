@@ -9,6 +9,18 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <div *ngIf="note" class="ion-padding ion-text-center">
+          <h2 >
+            {{ note.title }}
+          </h2>
+              <p>
+                {{ note.text }}
+              </p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
   <div *ngIf="note">
     <ion-item>
       <ion-label position="stacked">Title</ion-label>
