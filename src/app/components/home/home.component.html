@@ -1,8 +1,11 @@
-
-<div class="preview">
+<div class="ion-padding ion-text-center">
 <div *ngIf="profile?.userRole">
-  {{ profile.userRole }}
+  <p>
+    Welcome! Congratulations on your new role as an {{profile.userRole}}! Now get to work!
+  </p>
 </div>
+<div class="preview">
+
   <ion-avatar (click)="changeImage()">
     <img *ngIf="profile?.imageUrl; else placheolder_avatar;" [src]="profile.imageUrl" />
     <ng-template #placheolder_avatar>
@@ -13,10 +16,11 @@
   </ion-avatar>
 </div>
 
-<div *ngIf="profile?.userRole === 'admin'">
+<div class="ion-text-center" *ngIf="profile?.userRole === 'admin'">
 
   <ion-nav-link router-direction="forward" [component]="component">
     <ion-button>Admin Dashboard</ion-button>
   </ion-nav-link>
 </div>
 
+</div>

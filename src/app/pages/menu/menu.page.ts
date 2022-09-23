@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HomeComponent } from '../../components/home/home.component';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-menu',
+  templateUrl: './menu.page.html',
+  styleUrls: ['./menu.page.scss'],
 })
-export class HomePage implements OnInit {
-  component = HomeComponent;
+export class MenuPage implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) { }
   async logout() {
     await this.authService.logout();
     this.router.navigateByUrl('login', { replaceUrl: true });
   }
-  // goHome() {
-  //   this.router.navigateByUrl('profile', { replaceUrl: true });
-  // }
   ngOnInit() {
   }
 
