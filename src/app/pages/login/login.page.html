@@ -8,17 +8,59 @@
 	<form (ngSubmit)="login()" [formGroup]="credentials">
 		<div class="input-group">
       <ion-item>
-        <ion-label position="floating">Email</ion-label>
+
+        <ion-label position="stacked"><ion-icon name="mail-outline"></ion-icon> Email</ion-label>
 				<ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
 			</ion-item>
 			<div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
 				<span *ngIf="email.errors?.required">Email is required</span>
 				<span *ngIf="email.errors?.email">Email is invalid</span>
 			</div>
-			<ion-item>
+			<!-- <ion-item>
         <ion-label position="floating">Password</ion-label>
-				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-			</ion-item>
+        <!-- <ion-label slot="end" (click)="showPassword = !showPassword">
+          <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+        </ion-label>
+
+<a class="type-toggle" (click)="toggleShow()">
+   <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+   <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+</a>
+
+
+				<ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
+
+			</ion-item> -->
+			<!-- <ion-item>
+				<app-show-hide-password>
+					<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+				</app-show-hide-password>
+			  </ion-item>
+        <ng-content></ng-content>
+<a class="type-toggle" (click)="toggleShow()">
+   <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+   <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+</a> -->
+
+<ion-item >
+  <ion-label position="stacked">
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    Password
+  </ion-label>
+  <ion-input
+    [type]="showPwd ? 'text' : 'password'"
+    formControlName="password"
+  >
+  </ion-input>
+  <ion-icon
+    slot="end"
+    [name]="pwdIcon"
+    (click)="togglePwd()"
+  >
+  </ion-icon>
+</ion-item>
+
+
 			<div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
 				<span *ngIf="password.errors?.required">Password is required</span>
 				<span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>

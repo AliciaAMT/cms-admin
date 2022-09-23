@@ -1,20 +1,29 @@
 import { RecoverCredsComponent } from './../../components/recover-creds/recover-creds.component';
 // import { AuthenticationService } from './../../services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, IonInput, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
+
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
 	styleUrls: ['./login.page.scss']
 })
+
 export class LoginPage implements OnInit {
+  @ContentChild(IonInput) input: IonInput;
+  showPassword = true;
 	credentials: FormGroup;
   component: RecoverCredsComponent;
+
+  loginForm: FormGroup;
+  pwdIcon = 'eye-outline';
+  showPwd = false;
+
 
 constructor(
 		private fb: FormBuilder,
@@ -124,6 +133,28 @@ async register() {
       .then(() => this.router.navigate(['/tabs']))
       .catch((e) => console.log(e.message));
   }
+
+  // toggleShow() {
+  //   this.showPassword = !this.showPassword;
+  //   this.input.type = this.showPassword ? 'text' : 'password';
+  // }
+  togglePwd() {
+    this.showPwd = !this.showPwd;
+    this.pwdIcon = this.showPwd ? 'eye-off-outline' : 'eye-outline';
+  }
+}
+  // showPassword() {
+  //   const passwordInput = document.getElementById('password') as HTMLInputElement;
+  //   const passwordIcon = document.getElementById('password-icon') as HTMLElement;
+
+  //   if (passwordInput.type === 'password') {
+  //     passwordInput.type = 'text';
+  //     passwordIcon.classList.add('show');
+  //   } else {
+  //     passwordInput.type = 'password';
+  //     passwordIcon.classList.remove('show');
+  //   }
+  // }
   // async showAlert(header, message) {
   //   const alert = await this.alertController.create({
   //     header,
@@ -133,4 +164,4 @@ async register() {
 
   //   await alert.present();
   // }
-}
+

@@ -18,9 +18,10 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 
 @NgModule({
-  declarations: [AppComponent, AdminDashboardComponent, HomeComponent],
+  declarations: [AppComponent, AdminDashboardComponent, HomeComponent, ShowHidePasswordComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
