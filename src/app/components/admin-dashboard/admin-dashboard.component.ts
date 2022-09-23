@@ -33,6 +33,7 @@ export class AdminDashboardComponent implements OnInit {
   async addNote() {
     const alert = await this.alertCtrl.create({
       header: 'Add Note',
+    message: 'Enter a title and description for your note.',
       inputs: [
         {
           name: 'title',

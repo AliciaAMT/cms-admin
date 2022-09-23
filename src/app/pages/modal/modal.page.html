@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
   <div *ngIf="note">
     <ion-item>
       <ion-label position="stacked">Title</ion-label>
@@ -16,14 +20,26 @@
       <ion-textarea [(ngModel)]="note.text" rows="8"></ion-textarea>
     </ion-item>
   </div>
+</ion-col>
+</ion-row>
+    <ion-row>
+      <ion-col size-sm="4" offset-sm="4">
+        <ion-button expand="block" color="success" (click)="updateNote()">
+          <ion-icon name="save" slot="start"></ion-icon>
+          Update
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="4" offset-sm="4">
 
-  <ion-button expand="block" color="success" (click)="updateNote()">
-    <ion-icon name="save" slot="start"></ion-icon>
-    Update
-  </ion-button>
-  <ion-button expand="block" color="danger" (click)="deleteNote()">
-    <ion-icon name="trash" slot="start"></ion-icon>
-    Delete
-  </ion-button>
+        <ion-button expand="block" color="danger" (click)="deleteNote()">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          Delete
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
