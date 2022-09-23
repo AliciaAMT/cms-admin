@@ -6,16 +6,18 @@
       </ion-button>
       </ion-buttons>
 		<ion-buttons slot="end">
-      <ion-avatar>
+      <!-- <ion-avatar>
         <img *ngIf="profile?.imageUrl; else placheolder_avatar;" [src]="profile.imageUrl" />
         <ng-template #placheolder_avatar>
           <div class="fallback">
             <p>Select avatar</p>
           </div>
         </ng-template>
-      </ion-avatar>
-				<!-- <ion-icon slot="icon-only" name="log-out"></ion-icon> -->
+      </ion-avatar> -->
 
+<ion-button>
+  <ion-icon slot="icon-only" name="log-out"></ion-icon>
+</ion-button>
 		</ion-buttons>
 		<ion-title> The Way </ion-title>
 	</ion-toolbar>

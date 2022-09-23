@@ -1,8 +1,8 @@
-<app-menu>
-  
+<!-- <app-menu>
+
 </app-menu>
 
-<ion-content>
+<ion-content> -->
 <!-- ***********************************
 ***   HIDE UNLESS ADMIN   ***
 *********************************** -->
@@ -11,7 +11,7 @@
   <!-- <ion-nav-link router-direction="forward" [component]="component">
     <ion-button>Go to Page Two</ion-button>
   </ion-nav-link> -->
-  <ion-nav [root]="component"></ion-nav>
+  <!-- <ion-nav [root]="component"></ion-nav> -->
 <!--
 <h1>Simplicity, Stillness, Grace</h1>
 <h2>Slideshow</h2>
@@ -110,4 +110,35 @@ Christiana, TN 37037
 </p>
  -->
 
+<!-- </ion-content> -->
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+    <ion-buttons>
+    <ion-button (click)="logout()">
+
+      <ion-icon name="log-out" class="ion-padding"></ion-icon> Logout</ion-button>
+  </ion-buttons>
 </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title> The Way </ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-nav [root]="component"></ion-nav>
+  </ion-content>
+</div>
+

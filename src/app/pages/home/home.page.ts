@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeComponent } from 'src/app/components/home/home.component';
+import { Router } from '@angular/router';
+import { HomeComponent } from '../../components/home/home.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,14 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 export class HomePage implements OnInit {
   component = HomeComponent;
 
-  constructor() { }
-
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { }
+  async logout() {
+    await this.authService.logout();
+    this.router.navigateByUrl('login', { replaceUrl: true });
+  }
   ngOnInit() {
   }
 
