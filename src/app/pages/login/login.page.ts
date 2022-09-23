@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
 
 constructor(
 		private fb: FormBuilder,
-		private authService: AuthService,
+		public authService: AuthService,
 		private alertController: AlertController,
 		private router: Router,
 		private loadingController: LoadingController,
@@ -118,6 +118,12 @@ async register() {
 
   		}
 	}
+  loginWithGoogle() {
+    this.authService
+      .loginWithGoogle()
+      .then(() => this.router.navigate(['/tabs']))
+      .catch((e) => console.log(e.message));
+  }
   // async showAlert(header, message) {
   //   const alert = await this.alertController.create({
   //     header,
