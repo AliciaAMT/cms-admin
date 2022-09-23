@@ -1,4 +1,19 @@
 <div id="container">
   <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+	<div class="preview">
+		<ion-avatar (click)="changeImage()">
+			<img *ngIf="profile?.imageUrl; else placheolder_avatar;" [src]="profile.imageUrl" />
+			<ng-template #placheolder_avatar>
+				<div class="fallback">
+					<p>Select avatar</p>
+				</div>
+			</ng-template>
+		</ion-avatar>
+	</div>
+
 </div>
+
+
+
+

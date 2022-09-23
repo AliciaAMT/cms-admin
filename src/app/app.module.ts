@@ -1,6 +1,8 @@
+import { HomeComponent } from './components/home/home.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -15,11 +17,14 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { HttpClientModule } from '@angular/common/http';
+import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AdminDashboardComponent, HomeComponent, ShowHidePasswordComponent],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([]),
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -27,7 +32,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage())
+    provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage()),
+    HttpClientModule
   ],
   providers: [{
     provide: RouteReuseStrategy,

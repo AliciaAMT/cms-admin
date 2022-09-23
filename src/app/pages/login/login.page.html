@@ -1,0 +1,86 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-title>Login</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form (ngSubmit)="login()" [formGroup]="credentials">
+		<div class="input-group">
+      <ion-item>
+
+        <ion-label position="stacked"><ion-icon name="mail-outline"></ion-icon> Email</ion-label>
+				<ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+			</ion-item>
+			<div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+				<span *ngIf="email.errors?.required">Email is required</span>
+				<span *ngIf="email.errors?.email">Email is invalid</span>
+			</div>
+			<!-- <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <!-- <ion-label slot="end" (click)="showPassword = !showPassword">
+          <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+        </ion-label>
+
+<a class="type-toggle" (click)="toggleShow()">
+   <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+   <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+</a>
+
+
+				<ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
+
+			</ion-item> -->
+			<!-- <ion-item>
+				<app-show-hide-password>
+					<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+				</app-show-hide-password>
+			  </ion-item>
+        <ng-content></ng-content>
+<a class="type-toggle" (click)="toggleShow()">
+   <ion-icon class="show-option" [hidden]="showPassword" name="eye-off-outline"></ion-icon>
+   <ion-icon class="hide-option" [hidden]="!showPassword" name="eye-outline"></ion-icon>
+</a> -->
+
+<ion-item >
+  <ion-label position="stacked">
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    Password
+  </ion-label>
+  <ion-input
+    [type]="showPwd ? 'text' : 'password'"
+    formControlName="password"
+  >
+  </ion-input>
+  <ion-icon
+    slot="end"
+    [name]="pwdIcon"
+    (click)="togglePwd()"
+  >
+  </ion-icon>
+</ion-item>
+
+
+			<div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+				<span *ngIf="password.errors?.required">Password is required</span>
+				<span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+			</div>
+		</div>
+
+		<ion-button type="submit" expand="block" [disabled]="!credentials.valid">Log in</ion-button>
+		<ion-button type="button" expand="block" [disabled]="!credentials.valid" (click)="register()">Create Account
+		</ion-button>
+
+      <ion-button type="button" expand="block" (click)="resetPassword()">Recover Password</ion-button>
+
+
+		<ion-button type="button" expand="block" color="tertiary" (click)="loginWithGoogle()" >
+			<ion-icon name="logo-google" slot="start"></ion-icon>
+			Sign in with Google
+		</ion-button>
+		<!-- <ion-button type="button" expand="block" color="tertiary">
+			<ion-icon name="logo-apple" slot="start"></ion-icon>
+			Sign in with Apple
+		</ion-button> -->
+	</form>
+</ion-content>
