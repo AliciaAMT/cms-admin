@@ -38,6 +38,20 @@ const routes: Routes = [
   loadChildren: () => import('./pages/admin-dash/admin-dash.module').then( m => m.AdminDashPageModule),
   ...canActivate(redirectUnauthorizedToLogin), // If not authenticated, redirect to login
 },
+{
+  path: 'menu',
+  loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+},
+{
+  path: 'modal',
+  loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule),
+  ...canActivate(redirectUnauthorizedToLogin), // If not authenticated, redirect to login
+},
+{
+  path: 'modal/:id',
+  loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule),
+  ...canActivate(redirectUnauthorizedToLogin), // If not authenticated, redirect to login
+},
 // {
 //   path: 'home',
 //   loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -46,10 +60,7 @@ const routes: Routes = [
   path: '**',
   redirectTo: 'tabs',
   pathMatch: 'full'
-},  {
-    path: 'menu',
-    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
-  },
+}
 
 ];
 

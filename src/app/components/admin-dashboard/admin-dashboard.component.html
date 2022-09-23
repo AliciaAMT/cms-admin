@@ -1,7 +1,27 @@
-<p>
-  admin-dashboard works!
-</p>
-<!-- <ion-nav [root]="component"></ion-nav> -->
-<ion-nav-link router-direction="back" [component]="component">
-  <ion-button>Back to Login</ion-button>
-</ion-nav-link>
+<div class="ion-text-center ion-padding">
+<h1>
+  Administration Dashboard
+</h1>
+
+  <ion-nav-link router-direction="back" [component]="component">
+    <ion-button>Leave Admin</ion-button>
+  </ion-nav-link>
+<div class="ion-text-center">
+  <h2>Notes</h2>
+  <ion-list>
+    <ion-item *ngFor="let note of notes" [routerLink]="['/modal', note.id]">
+      <ion-label>
+        {{ note.title }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</div>
+  <div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNote()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 // import { MenuPageModule } from '../menu/menu.module';
-import { MenuComponent } from '../../components/menu/menu.component';
+// import { MenuComponent } from '../../components/menu/menu.component';
 
 @NgModule({
   imports: [
@@ -18,6 +18,6 @@ import { MenuComponent } from '../../components/menu/menu.component';
     HomePageRoutingModule,
 
   ],
-  declarations: [HomePage, MenuComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
