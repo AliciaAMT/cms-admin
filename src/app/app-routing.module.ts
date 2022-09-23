@@ -46,7 +46,11 @@ const routes: Routes = [
   path: '**',
   redirectTo: 'tabs',
   pathMatch: 'full'
-},
+},  {
+    path: 'menu',
+    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+  },
+
 ];
 
   // {
