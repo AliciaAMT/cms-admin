@@ -119,10 +119,15 @@ Christiana, TN 37037
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
+    <ion-menu-toggle>
+      <ion-buttons class="ion-padding">
+        <ion-button>
+          <ion-icon name="home" class="ion-padding"></ion-icon> Home </ion-button>
+      </ion-buttons>
+    </ion-menu-toggle>
 
-    <ion-buttons>
+    <ion-buttons class="ion-padding">
     <ion-button (click)="logout()">
-
       <ion-icon name="log-out" class="ion-padding"></ion-icon> Logout</ion-button>
   </ion-buttons>
 </ion-content>
@@ -131,7 +136,7 @@ Christiana, TN 37037
   <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button></ion-menu-button> Menu
       </ion-buttons>
       <ion-title> The Way </ion-title>
 

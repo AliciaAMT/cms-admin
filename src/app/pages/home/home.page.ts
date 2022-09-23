@@ -19,6 +19,9 @@ export class HomePage implements OnInit {
     await this.authService.logout();
     this.router.navigateByUrl('login', { replaceUrl: true });
   }
+  // goHome() {
+  //   this.router.navigateByUrl('profile', { replaceUrl: true });
+  // }
   ngOnInit() {
   }
 
