@@ -2,7 +2,7 @@ import { ModalPage } from './../../pages/modal/modal.page';
 import { LoginPage } from './../../pages/login/login.page';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { DataService, Note } from '../../services/data.service';
+import { DataService, Note, User } from '../../services/data.service';
 import { AlertController, ModalController } from '@ionic/angular';
 
 
@@ -15,6 +15,7 @@ export class AdminDashboardComponent implements OnInit {
   component = LoginPage;
   editComponent = ModalPage;
   notes: Note[] = [];
+  users: User[] = [];
 
   constructor(
     private dataService: DataService,
@@ -24,6 +25,10 @@ export class AdminDashboardComponent implements OnInit {
   ) {
     this.dataService.getNotes().subscribe(res => {
       this.notes = res;
+      this.cd.detectChanges();
+    });
+    this.dataService.getUsers().subscribe((data) => {
+      this.users = data;
       this.cd.detectChanges();
     });
   }
