@@ -1,0 +1,33 @@
+<div class="ion-text-center ion-padding">
+  <h1>
+    Administration Dashboard
+  </h1>
+
+  <ion-nav-link router-direction="back" [component]="adminComponent">
+    <ion-button>Back</ion-button>
+  </ion-nav-link>
+  </div>
+  <ion-content>
+
+    <div class="ion-text-center">
+      <ion-list>
+        <ion-item *ngFor="let note of notes" [routerLink]="['/modal', note.id]">
+          <ion-nav-link router-direction="forward" [component]="editComponent">
+            <ion-label>
+              {{ note.title }}
+            </ion-label>
+          </ion-nav-link>
+
+
+        </ion-item>
+      </ion-list>
+    </div>
+<div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-fab-button (click)="addNote()">
+  <ion-icon name="add"></ion-icon>
+</ion-fab-button>
+</ion-fab>
+</div>
+
+  </ion-content>

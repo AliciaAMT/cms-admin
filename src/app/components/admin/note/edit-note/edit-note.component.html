@@ -3,10 +3,12 @@
     <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
+<div class="ion-text-center">
+  <ion-nav-link router-direction="back" [component]="notesComponent">
+    <ion-button>Back</ion-button>
+  </ion-nav-link>
+</div>
 
-<ion-nav-link router-direction="back" [component]="notesComponent">
-  <ion-button>Back</ion-button>
-</ion-nav-link>
 <ion-content>
 
   <ion-grid>

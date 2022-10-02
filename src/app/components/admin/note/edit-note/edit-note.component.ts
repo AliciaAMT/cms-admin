@@ -1,15 +1,15 @@
+import { DataService, Note } from './../../../../services/data.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Note, DataService } from '../../services/data.service';
+import { NotesComponent } from '../../notes/notes.component';
 import { ModalController, ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { NotesComponent } from 'src/app/components/admin/notes/notes.component';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.page.html',
-  styleUrls: ['./modal.page.scss'],
+  selector: 'app-edit-note',
+  templateUrl: './edit-note.component.html',
+  styleUrls: ['./edit-note.component.scss'],
 })
-export class ModalPage implements OnInit {
+export class EditNoteComponent implements OnInit {
   @Input() id: string;
   notesComponent = NotesComponent;
   note: Note = null;
@@ -19,16 +19,15 @@ export class ModalPage implements OnInit {
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit() {
-this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
 
     this.dataService.getNoteById(this.id).subscribe(res => {
       this.note = res;
     });
   }
-
   async deleteNote() {
     await this.dataService.deleteNote(this.note);
     this.modalCtrl.dismiss();
@@ -41,6 +40,5 @@ this.id = this.route.snapshot.paramMap.get('id');
       duration: 2000
     });
     toast.present();
-
   }
 }

@@ -1,4 +1,6 @@
 import { HomeComponent } from './components/home/home.component';
+// import { EditNoteComponent } from './components/admin/note/edit-note/edit-note.component';
+import { NotesComponent } from './components/admin/notes/notes.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 import { NgModule } from '@angular/core';
@@ -22,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 
 @NgModule({
-  declarations: [AppComponent, AdminDashboardComponent, HomeComponent, ShowHidePasswordComponent],
+  declarations: [AppComponent, AdminDashboardComponent, HomeComponent, ShowHidePasswordComponent, NotesComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
